@@ -5,6 +5,7 @@ import TeacherCategory from './TeacherCategory';
 import RatedTeacher from './RatedTeacher';
 import NewsItem from './NewsItem';
 import ListTeacher from './ListTeacher';
+import ListInformation from './ListInformation';
 
 export {
   Header,
@@ -14,4 +15,5 @@ export {
   RatedTeacher,
   NewsItem,
   ListTeacher,
+  ListInformation,
 };
