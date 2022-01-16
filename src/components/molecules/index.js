@@ -4,10 +4,11 @@ import HomeProfile from './HomeProfile';
 import TeacherCategory from './TeacherCategory';
 import RatedTeacher from './RatedTeacher';
 import NewsItem from './NewsItem';
-import ListTeacher from './ListTeacher';
+import List from './List';
 import ListInformation from './ListInformation';
 import ChatItem from './ChatItem';
 import InputChat from './InputChat';
+import Profile from './Profile';
 export {
   Header,
   BottomNavigator,
@@ -15,8 +16,9 @@ export {
   TeacherCategory,
   RatedTeacher,
   NewsItem,
-  ListTeacher,
+  List,
   ListInformation,
   ChatItem,
   InputChat,
+  Profile,
 };

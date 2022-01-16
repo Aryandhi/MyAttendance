@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Guru4} from '../../assets';
-import {Header, ListTeacher} from '../../components';
+import {Header, List} from '../../components';
 import {colors} from '../../utils';
 
 const ChooseTeacher = ({navigation}) => {
@@ -12,37 +12,17 @@ const ChooseTeacher = ({navigation}) => {
         title="Pilih Guru Matematika"
         onPress={() => navigation.goBack()}
       />
-      <ListTeacher
+      <List
         type="next"
         profile={Guru4}
         name="Alexander Jennie"
         desc="Wanita"
         onPress={() => navigation.navigate('Chatting')}
       />
-      <ListTeacher
-        type="next"
-        profile={Guru4}
-        name="Alexander Jennie"
-        desc="Wanita"
-      />
-      <ListTeacher
-        type="next"
-        profile={Guru4}
-        name="Alexander Jennie"
-        desc="Wanita"
-      />
-      <ListTeacher
-        type="next"
-        profile={Guru4}
-        name="Alexander Jennie"
-        desc="Wanita"
-      />
-      <ListTeacher
-        type="next"
-        profile={Guru4}
-        name="Alexander Jennie"
-        desc="Wanita"
-      />
+      <List type="next" profile={Guru4} name="Alexander Jennie" desc="Wanita" />
+      <List type="next" profile={Guru4} name="Alexander Jennie" desc="Wanita" />
+      <List type="next" profile={Guru4} name="Alexander Jennie" desc="Wanita" />
+      <List type="next" profile={Guru4} name="Alexander Jennie" desc="Wanita" />
     </View>
   );
 };

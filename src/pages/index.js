@@ -8,6 +8,7 @@ import Messages from './Messages';
 import Informations from './Informations';
 import ChooseTeacher from './ChooseTeacher';
 import Chatting from './Chatting';
+import UserProfile from './UserProfile';
 export {
   Splash,
   GetStarted,
@@ -19,4 +20,5 @@ export {
   Informations,
   ChooseTeacher,
   Chatting,
+  UserProfile
 };
