@@ -1,17 +1,14 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {Guru1} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const ListTeacher = () => {
+const ListTeacher = ({profile, name, desc}) => {
   return (
     <View style={styles.container}>
-      <Image source={Guru1} style={styles.avatar} />
+      <Image source={profile} style={styles.avatar} />
       <View>
-        <Text style={styles.name}>Hendro Junawarko</Text>
-        <Text style={styles.desc}>
-          Baik Pak, terima kasih banyak atas wakt...
-        </Text>
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.desc}>{desc}</Text>
       </View>
     </View>
   );
