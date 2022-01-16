@@ -13,30 +13,34 @@ const Teacher = () => {
   return (
     <View style={styles.page}>
       <View style={styles.content}>
-        <HomeProfile />
-        <Text style={styles.welcome}>
-          Mau konsultasi dengan siapa hari ini?
-        </Text>
-        <View style={styles.wrapperScroll}>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <View style={styles.category}>
-              <Gap width={16} />
-              <TeacherCategory />
-              <TeacherCategory />
-              <TeacherCategory />
-              <TeacherCategory />
-              <Gap width={6} />
+        <ScrollView showsVerticalScrollIndicator={false}>
+            <Gap height={30} />
+            <HomeProfile />
+            <Text style={styles.welcome}>
+              Mau konsultasi dengan siapa hari ini?
+            </Text>
+            <View style={styles.wrapperScroll}>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                <View style={styles.category}>
+                  <Gap width={16} />
+                  <TeacherCategory />
+                  <TeacherCategory />
+                  <TeacherCategory />
+                  <TeacherCategory />
+                  <Gap width={6} />
+                </View>
+              </ScrollView>
             </View>
-          </ScrollView>
-        </View>
-        <Text style={styles.sectionLabel}>Top Rated Teachers</Text>
-        <RatedTeacher />
-        <RatedTeacher />
-        <RatedTeacher />
-        <Text style={styles.sectionLabel}>Good News</Text>
-        <NewsItem />
-        <NewsItem />
-        <NewsItem />
+            <Text style={styles.sectionLabel}>Top Rated Teachers</Text>
+            <RatedTeacher />
+            <RatedTeacher />
+            <RatedTeacher />
+            <Text style={styles.sectionLabel}>Good News</Text>
+            <NewsItem />
+            <NewsItem />
+            <NewsItem />
+            <Gap height={30} />
+        </ScrollView>
       </View>
     </View>
   );
