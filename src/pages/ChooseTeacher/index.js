@@ -4,15 +4,20 @@ import {Guru4} from '../../assets';
 import {Header, ListTeacher} from '../../components';
 import {colors} from '../../utils';
 
-const ChooseTeacher = () => {
+const ChooseTeacher = ({navigation}) => {
   return (
     <View style={styles.page}>
-      <Header type="dark" title="Pilih Dokter Anak" />
+      <Header
+        type="dark"
+        title="Pilih Guru Matematika"
+        onPress={() => navigation.goBack()}
+      />
       <ListTeacher
         type="next"
         profile={Guru4}
         name="Alexander Jennie"
         desc="Wanita"
+        onPress={() => navigation.navigate('Chatting')}
       />
       <ListTeacher
         type="next"
