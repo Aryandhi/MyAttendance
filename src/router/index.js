@@ -19,9 +19,21 @@ const Tab = createBottomTabNavigator();
 const MainApp = () => {
   return (
     <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
-      <Tab.Screen name="Teacher" component={Teacher} />
-      <Tab.Screen name="Messages" component={Messages} />
-      <Tab.Screen name="Informations" component={Informations} />
+      <Tab.Screen
+        name="Teacher"
+        component={Teacher}
+        options={{headerShown: false}}
+      />
+      <Tab.Screen
+        name="Messages"
+        component={Messages}
+        options={{headerShown: false}}
+      />
+      <Tab.Screen
+        name="Informations"
+        component={Informations}
+        options={{headerShown: false}}
+      />
     </Tab.Navigator>
   );
 };

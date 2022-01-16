@@ -1,14 +1,33 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
+import {User1} from '../../../assets';
+import {colors, fonts} from '../../../utils';
 
 const HomeProfile = () => {
   return (
-    <View>
-      <Text>Home Profile Component</Text>
+    <View style={styles.container}>
+      <Image source={User1} style={styles.avatar} />
+      <View>
+        <Text style={styles.name}>Ardi Wibowo</Text>
+        <Text style={styles.profession}>Product Designer</Text>
+      </View>
     </View>
   );
 };
 
 export default HomeProfile;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {flexDirection: 'row'},
+  avatar: {width: 46, height: 46, borderRadius: 46 / 2, marginRight: 12},
+  name: {
+    fontSize: 16,
+    fontFamily: fonts.primary[600],
+    color: colors.text.primary,
+  },
+  profession: {
+    fontSize: 12,
+    fontFamily: fonts.primary[400],
+    color: colors.text.secondary,
+  },
+});
