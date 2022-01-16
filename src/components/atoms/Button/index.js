@@ -1,16 +1,16 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const Button = ({type, title}) => {
+const Button = ({type, title, onPress}) => {
   return (
-    <View style={styles.container(type)}>
+    <TouchableOpacity style={styles.container(type)} onPress={onPress}>
       <Text style={styles.text(type)}>{title}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 export default Button;
-
 const styles = StyleSheet.create({
   container: type => ({
     backgroundColor: type === 'secondary' ? 'white' : '#0bcad4',
