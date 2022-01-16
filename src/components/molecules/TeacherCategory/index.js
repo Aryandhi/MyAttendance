@@ -1,9 +1,9 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {ILCatUmum} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const TeacherCategory = ({category}) => {
+const TeacherCategory = ({category, onPress}) => {
   const Icon = () => {
     if (category === 'Matematika') {
       return <ILCatUmum style={styles.illustration} />;
@@ -18,11 +18,11 @@ const TeacherCategory = ({category}) => {
     return <ILCatUmum style={styles.illustration} />;
   };
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <Icon />
       <Text style={styles.label}>guru</Text>
       <Text style={styles.category}>{category}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -6,7 +6,7 @@ import UploadPhoto from './UploadPhoto';
 import Teacher from './Teacher';
 import Messages from './Messages';
 import Informations from './Informations';
-
+import ChooseTeacher from './ChooseTeacher';
 export {
   Splash,
   GetStarted,
@@ -16,4 +16,5 @@ export {
   Teacher,
   Messages,
   Informations,
+  ChooseTeacher,
 };

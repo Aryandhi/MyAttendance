@@ -10,7 +10,7 @@ import {
 import {colors, fonts} from '../../utils';
 import {JSONCategoryTeacher} from '../../assets';
 
-const Teacher = () => {
+const Teacher = ({navigation}) => {
   return (
     <View style={styles.page}>
       <View style={styles.content}>
@@ -28,7 +28,11 @@ const Teacher = () => {
                 <Gap width={32} />
                 {JSONCategoryTeacher.data.map(item => {
                   return (
-                    <TeacherCategory key={item.id} category={item.category} />
+                    <TeacherCategory
+                      key={item.id}
+                      category={item.category}
+                      onPress={() => navigation.navigate('ChooseTeacher')}
+                    />
                   );
                 })}
                 <Gap width={22} />
