@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "category": "Matematika"
+    },
+    {
+      "id": 2,
+      "category": "Kimia"
+    },
+    {
+      "id": 3,
+      "category": "Fisika"
+    },
+    {
+      "id": 4,
+      "category": "Jaringan"
+    },
+    {
+      "id": 5,
+      "category": "English"
+    }
+  ]
+}

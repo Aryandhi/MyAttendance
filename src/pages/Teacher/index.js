@@ -8,6 +8,7 @@ import {
   RatedTeacher,
 } from '../../components';
 import {colors, fonts} from '../../utils';
+import {JSONCategoryTeacher} from '../../assets';
 
 const Teacher = () => {
   return (
@@ -25,10 +26,11 @@ const Teacher = () => {
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <View style={styles.category}>
                 <Gap width={32} />
-                <TeacherCategory />
-                <TeacherCategory />
-                <TeacherCategory />
-                <TeacherCategory />
+                {JSONCategoryTeacher.data.map(item => {
+                  return (
+                    <TeacherCategory key={item.id} category={item.category} />
+                  );
+                })}
                 <Gap width={22} />
               </View>
             </ScrollView>

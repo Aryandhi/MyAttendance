@@ -3,12 +3,25 @@ import {StyleSheet, Text, View} from 'react-native';
 import {ILCatUmum} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const TeacherCategory = () => {
+const TeacherCategory = ({category}) => {
+  const Icon = () => {
+    if (category === 'Matematika') {
+      return <ILCatUmum style={styles.illustration} />;
+    }
+    if (category === 'Kimia') {
+      return <ILCatUmum style={styles.illustration} />;
+    }
+    if (category === 'Fisika') {
+      return <ILCatUmum style={styles.illustration} />;
+    }
+
+    return <ILCatUmum style={styles.illustration} />;
+  };
   return (
     <View style={styles.container}>
-      <ILCatUmum style={styles.illustration} />
+      <Icon />
       <Text style={styles.label}>guru</Text>
-      <Text style={styles.category}>matematika</Text>
+      <Text style={styles.category}>{category}</Text>
     </View>
   );
 };
