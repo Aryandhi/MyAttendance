@@ -1,8 +1,8 @@
 import React from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import {ILSMKBG} from '../../assets';
 import {ListInformation} from '../../components';
 import {colors, fonts} from '../../utils';
+import {DummySch1, DummySch2, DummySch3, ILSMKBG} from '../../assets';
 
 const Informations = () => {
   return (
@@ -11,9 +11,24 @@ const Informations = () => {
         <Text style={styles.title}>Media Informasi</Text>
       </ImageBackground>
       <View style={styles.content}>
-        <ListInformation />
-        <ListInformation />
-        <ListInformation />
+        <ListInformation
+          type="Penerimaan Siswa Baru"
+          name="SMK 2 Mei"
+          address="Bandar Lampung"
+          pic={DummySch1}
+        />
+        <ListInformation
+          type="Juara Lomba"
+          name="SMK 2 Mei juarai liga futsal"
+          address="Teknokrat, Bandar Lampung"
+          pic={DummySch2}
+        />
+        <ListInformation
+          type="Mobil Rakitan Siswa"
+          name="Wagub kunjungi SMK 2 Mei"
+          address="Bandar Lampung"
+          pic={DummySch3}
+        />
       </View>
     </View>
   );
