@@ -5,7 +5,7 @@ import Login from './Login';
 import UploadPhoto from './UploadPhoto';
 import Teacher from './Teacher';
 import Messages from './Messages';
-import Informations from './Informations';
+import Information from './Information';
 import ChooseTeacher from './ChooseTeacher';
 import Chatting from './Chatting';
 import UserProfile from './UserProfile';
@@ -17,7 +17,7 @@ export {
   UploadPhoto,
   Teacher,
   Messages,
-  Informations,
+  Information,
   ChooseTeacher,
   Chatting,
   UserProfile

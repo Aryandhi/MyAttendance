@@ -18,7 +18,7 @@ const TabItem = ({title, active, onPress, onLongPress}) => {
     if (title === 'Messages') {
       return active ? <IconMessagesActive /> : <IconMessages />;
     }
-    if (title === 'Informations') {
+    if (title === 'Information') {
       return active ? <IconHospitalsActive /> : <IconHospitals />;
     }
     return <IconDoctor />;

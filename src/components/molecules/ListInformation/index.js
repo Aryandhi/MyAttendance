@@ -3,15 +3,15 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import {IconNext} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const ListInformation = ({profile, name, desc, type}) => {
+const ListInformation = ({type, name, address, pic}) => {
   return (
     <View style={styles.container}>
-      <Image source={profile} style={styles.avatar} />
+      <Image source={pic} style={styles.picture} />
       <View style={styles.content}>
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.desc}>{desc}</Text>
+        <Text style={styles.title}>{type}</Text>
+        <Text style={styles.title}>{name}</Text>
+        <Text style={styles.address}>{address}</Text>
       </View>
-      {type === 'next' && <IconNext />}
     </View>
   );
 };
@@ -25,9 +25,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: colors.border,
     alignItems: 'center',
-    justifyContent: 'space-between',
   },
-  content: {flex: 1},
   picture: {width: 80, height: 60, borderRadius: 11, marginRight: 16},
   title: {
     fontSize: 16,

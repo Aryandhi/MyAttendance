@@ -8,7 +8,7 @@ import {
   UploadPhoto,
   Teacher,
   Messages,
-  Informations,
+  Information,
   ChooseTeacher,
   Chatting,
   UserProfile,
@@ -33,8 +33,8 @@ const MainApp = () => {
         options={{headerShown: false}}
       />
       <Tab.Screen
-        name="Informations"
-        component={Informations}
+        name="Information"
+        component={Information}
         options={{headerShown: false}}
       />
     </Tab.Navigator>

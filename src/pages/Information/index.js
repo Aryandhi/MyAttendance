@@ -4,7 +4,7 @@ import {ListInformation} from '../../components';
 import {colors, fonts} from '../../utils';
 import {DummySch1, DummySch2, DummySch3, ILSMKBG} from '../../assets';
 
-const Informations = () => {
+const Information = () => {
   return (
     <View style={styles.page}>
       <ImageBackground source={ILSMKBG} style={styles.background}>
@@ -34,7 +34,7 @@ const Informations = () => {
   );
 };
 
-export default Informations;
+export default Information;
 
 const styles = StyleSheet.create({
   page: {backgroundColor: colors.secondary, flex: 1},
