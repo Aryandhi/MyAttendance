@@ -14,32 +14,36 @@ const Teacher = () => {
     <View style={styles.page}>
       <View style={styles.content}>
         <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.wrapperSection}>
             <Gap height={30} />
             <HomeProfile />
             <Text style={styles.welcome}>
               Mau konsultasi dengan siapa hari ini?
             </Text>
-            <View style={styles.wrapperScroll}>
-              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <View style={styles.category}>
-                  <Gap width={16} />
-                  <TeacherCategory />
-                  <TeacherCategory />
-                  <TeacherCategory />
-                  <TeacherCategory />
-                  <Gap width={6} />
-                </View>
-              </ScrollView>
-            </View>
+          </View>
+          <View style={styles.wrapperScroll}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <View style={styles.category}>
+                <Gap width={32} />
+                <TeacherCategory />
+                <TeacherCategory />
+                <TeacherCategory />
+                <TeacherCategory />
+                <Gap width={22} />
+              </View>
+            </ScrollView>
+          </View>
+          <View style={styles.wrapperSection}>
             <Text style={styles.sectionLabel}>Top Rated Teachers</Text>
             <RatedTeacher />
             <RatedTeacher />
             <RatedTeacher />
-            <Text style={styles.sectionLabel}>Good News</Text>
-            <NewsItem />
-            <NewsItem />
-            <NewsItem />
-            <Gap height={30} />
+            <Text style={styles.sectionLabel}>Informasi Absensi dan Tugas</Text>
+          </View>
+          <NewsItem />
+          <NewsItem />
+          <NewsItem />
+          <Gap height={30} />
         </ScrollView>
       </View>
     </View>
@@ -61,6 +65,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
+  wrapperSection: {paddingHorizontal: 16},
   welcome: {
     fontSize: 20,
     fontFamily: fonts.primary[600],
