@@ -4,6 +4,7 @@ import HomeProfile from './HomeProfile';
 import TeacherCategory from './TeacherCategory';
 import RatedTeacher from './RatedTeacher';
 import NewsItem from './NewsItem';
+import ListTeacher from './ListTeacher';
 
 export {
   Header,
@@ -12,4 +13,5 @@ export {
   TeacherCategory,
   RatedTeacher,
   NewsItem,
+  ListTeacher,
 };
