@@ -1,6 +1,5 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {News1} from '../../../assets';
 import {fonts, colors} from '../../../utils';
 
 const NewsItem = ({title, body, date, image}) => {

@@ -6,7 +6,7 @@ import {colors, fonts} from '../../../utils';
 const ListInformation = ({type, name, address, pic}) => {
   return (
     <View style={styles.container}>
-      <Image source={pic} style={styles.picture} />
+      <Image source={{uri: pic}} style={styles.picture} />
       <View style={styles.content}>
         <Text style={styles.title}>{type}</Text>
         <Text style={styles.title}>{name}</Text>
@@ -31,11 +31,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: fonts.primary.normal,
     color: colors.text.primary,
+    textTransform: 'capitalize',
   },
   address: {
     fontSize: 12,
     fontFamily: fonts.primary[300],
     color: colors.text.secondary,
     marginTop: 6,
+    textTransform: 'capitalize',
   },
 });

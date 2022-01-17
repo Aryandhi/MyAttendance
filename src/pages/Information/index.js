@@ -1,34 +1,42 @@
-import React from 'react';
+import {child, get, getDatabase, ref} from '@firebase/database';
+import React, {useEffect, useState} from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import {ListInformation} from '../../components';
 import {colors, fonts} from '../../utils';
-import {DummySch1, DummySch2, DummySch3, ILSMKBG} from '../../assets';
+import {ILSMKBG} from '../../assets';
+import {Fire} from '../../config';
 
 const Information = () => {
+  const [informations, setInformations] = useState([]);
+  useEffect(() => {
+    const dbRef = ref(getDatabase(Fire));
+    get(child(dbRef, `informations/`))
+      .then(value => {
+        if (value.exists()) {
+          setInformations(value.val());
+        }
+      })
+      .catch(error => {
+        showError(error);
+      });
+  }, []);
   return (
     <View style={styles.page}>
       <ImageBackground source={ILSMKBG} style={styles.background}>
         <Text style={styles.title}>Media Informasi</Text>
       </ImageBackground>
       <View style={styles.content}>
-        <ListInformation
-          type="Penerimaan Siswa Baru"
-          name="SMK 2 Mei"
-          address="Bandar Lampung"
-          pic={DummySch1}
-        />
-        <ListInformation
-          type="Juara Lomba"
-          name="SMK 2 Mei juarai liga futsal"
-          address="Teknokrat, Bandar Lampung"
-          pic={DummySch2}
-        />
-        <ListInformation
-          type="Mobil Rakitan Siswa"
-          name="Wagub kunjungi SMK 2 Mei"
-          address="Bandar Lampung"
-          pic={DummySch3}
-        />
+        {informations.map(item => {
+          return (
+            <ListInformation
+              key={item.id}
+              type={item.type}
+              name={item.name}
+              address={item.address}
+              pic={item.pic}
+            />
+          );
+        })}
       </View>
     </View>
   );
