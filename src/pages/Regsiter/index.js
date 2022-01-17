@@ -31,6 +31,7 @@ const Register = ({navigation}) => {
           fullName: form.fullName,
           profession: form.profession,
           email: form.email,
+          uid: userCredential.user.uid,
         };
 
         const db = getDatabase(Fire);
