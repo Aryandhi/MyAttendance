@@ -7,9 +7,9 @@ import {Fire} from '../../config';
 
 const Splash = ({navigation}) => {
   useEffect(() => {
-    setTimeout(() => {
-      const auth = getAuth(Fire);
-      onAuthStateChanged(auth, user => {
+    const auth = getAuth(Fire);
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      setTimeout(() => {
         if (user) {
           // User is signed in, see docs for a list of available properties
           console.log('user: ', user);
@@ -18,9 +18,11 @@ const Splash = ({navigation}) => {
           // User is signed out
           navigation.replace('GetStarted');
         }
-      });
-    }, 3000);
-  }, []);
+      }, 3000);
+    });
+
+    return () => unsubscribe();
+  }, [navigation]);
 
   return (
     <View style={styles.page}>
