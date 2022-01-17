@@ -71,7 +71,10 @@ const Teacher = ({navigation}) => {
     get(child(dbRef, 'category_teacher/'))
       .then(value => {
         if (value.exists()) {
-          setCategoryTeacher(value.val());
+          const data = value.val();
+          const filterData = data.filter(el => el !== null);
+
+          setCategoryDoctor(filterData);
         }
       })
       .catch(error => {
@@ -84,7 +87,10 @@ const Teacher = ({navigation}) => {
     get(child(dbRef, 'news/'))
       .then(value => {
         if (value.exists()) {
-          setNews(value.val());
+          const data = value.val();
+          const filterData = data.filter(el => el !== null);
+
+          setNews(filterData);
         }
       })
       .catch(error => {
