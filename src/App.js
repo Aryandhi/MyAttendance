@@ -14,8 +14,8 @@ const MainApp = () => {
       <NavigationContainer>
         <Router />
       </NavigationContainer>
-      <FlashMessage position="top" />
-      {stateGlobal.loading && <Loading />}
+      {/* <FlashMessage position="top" />
+      {stateGlobal.loading && <Loading />} */}
     </>
   );
 };

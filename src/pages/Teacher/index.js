@@ -1,6 +1,15 @@
-import {child, get, getDatabase, ref} from '@firebase/database';
+import {
+  child,
+  get,
+  getDatabase,
+  ref,
+  query,
+  orderByChild,
+  limitToLast,
+} from '@firebase/database';
 import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Guru1, Guru2, Guru3, ILNullPhoto} from '../../assets';
 import {
   TeacherCategory,
   Gap,
@@ -9,18 +18,68 @@ import {
   RatedTeacher,
 } from '../../components';
 import {Fire} from '../../config';
-import {colors, fonts, showError, getData} from '../../utils';
-import {Guru1, Guru2, Guru3, ILNullPhoto} from '../../assets';
+import {colors, fonts, getData, showError} from '../../utils';
 
 const Teacher = ({navigation}) => {
   const [news, setNews] = useState([]);
   const [categoryTeacher, setCategoryTeacher] = useState([]);
+  const [teachers, setTeachers] = useState([]);
   const [profile, setProfile] = useState({
     photoURL: ILNullPhoto,
     fullName: '',
     profession: '',
   });
   useEffect(() => {
+    getNews();
+    getCategoryTeacher();
+    getTopRatedTeacher();
+    getUser();
+  }, []);
+
+  const getTopRatedTeacher = () => {
+    const db = getDatabase(Fire);
+
+    const topRatedTeacher = query(
+      ref(db, 'teachers/'),
+      orderByChild('rate'),
+      limitToLast(3),
+    );
+
+    get(topRatedTeacher)
+      .then(value => {
+        console.log('top rated teacher: ', value.val());
+        if (value.exists()) {
+          const oldData = value.val();
+          const data = [];
+          Object.keys(oldData).map(key => {
+            data.push({
+              id: key,
+              data: oldData[key],
+            });
+          });
+          console.log('data hasil array: ', data);
+          setTeachers(data);
+        }
+      })
+      .catch(error => {
+        showError(error);
+      });
+  };
+
+  const getCategoryTeacher = () => {
+    const dbRef = ref(getDatabase(Fire));
+    get(child(dbRef, `category_teacher/`))
+      .then(value => {
+        if (value.exists()) {
+          setCategoryTeacher(value.val());
+        }
+      })
+      .catch(error => {
+        showError(error);
+      });
+  };
+
+  const getNews = () => {
     const dbRef = ref(getDatabase(Fire));
     get(child(dbRef, `news/`))
       .then(value => {
@@ -31,23 +90,17 @@ const Teacher = ({navigation}) => {
       .catch(error => {
         showError(error);
       });
+  };
 
-    get(child(dbRef, `category_teacher/`))
-      .then(value => {
-        if (value.exists()) {
-          setCategoryTeacher(value.val());
-        }
-      })
-      .catch(error => {
-        showError(error);
-      });
+  const getUser = () => {
     getData('user').then(res => {
       const data = res;
       data.photoURL =
         res?.photoURL?.length > 1 ? {uri: res.photoURL} : ILNullPhoto;
       setProfile(data);
     });
-  }, []);
+  };
+
   return (
     <View style={styles.page}>
       <View style={styles.content}>
@@ -80,33 +133,25 @@ const Teacher = ({navigation}) => {
             </ScrollView>
           </View>
           <View style={styles.wrapperSection}>
-            <Text style={styles.sectionLabel}>Top Rated Teachers</Text>
-            <RatedTeacher
-              name="Hendro Junawarko Spd"
-              desc="Matematika"
-              avatar={Guru1}
-              onPress={() => navigation.navigate('TeacherProfile')}
-            />
-            <RatedTeacher
-              name="Sri Pudji Spd"
-              desc="Kimia"
-              avatar={Guru2}
-              onPress={() => navigation.navigate('TeacherProfile')}
-            />
-            <RatedTeacher
-              name="Ratna Spd"
-              desc="Fisika"
-              avatar={Guru3}
-              onPress={() => navigation.navigate('TeacherProfile')}
-            />
-            <Text style={styles.sectionLabel}>Informasi Absensi dan Tugas</Text>
+            <Text style={styles.sectionLabel}>Guru Favorit</Text>
+            {teachers.map(teacher => {
+              return (
+                <RatedTeacher
+                  key={teacher.id}
+                  name={teacher.data.fullName}
+                  desc={teacher.data.profession}
+                  avatar={{uri: teacher.data.photo}}
+                  onPress={() => navigation.navigate('TeacherProfile')}
+                />
+              );
+            })}
+            <Text style={styles.sectionLabel}>Informasi Absen dan Tugas</Text>
           </View>
           {news.map(item => {
             return (
               <NewsItem
                 key={item.id}
                 title={item.title}
-                body={item.body}
                 date={item.date}
                 image={item.image}
               />
@@ -129,8 +174,6 @@ const styles = StyleSheet.create({
   content: {
     backgroundColor: colors.white,
     flex: 1,
-    paddingVertical: 30,
-    paddingHorizontal: 16,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
