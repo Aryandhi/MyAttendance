@@ -30,26 +30,26 @@ const UserProfile = ({navigation}) => {
       )}
       <Gap height={14} />
       <List
-        name="Language"
+        name="Edit Profile"
         desc="Last Update Yesterday"
         type="next"
         icon="edit-profile"
         onPress={() => navigation.navigate('UpdateProfile')}
       />
       <List
-        name="Gives Us Rate"
+        name="Bahasa"
         desc="Last Update Yesterday"
         type="next"
         icon="language"
       />
       <List
-        name="Help Center"
+        name="Berikan Rating"
         desc="Last Update Yesterday"
         type="next"
         icon="rate"
       />
       <List
-        name="Edit Profile"
+        name="Help Center"
         desc="Last Update Yesterday"
         type="next"
         icon="help"
