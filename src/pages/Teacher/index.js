@@ -2,14 +2,14 @@ import {
   child,
   get,
   getDatabase,
+  limitToLast,
   ref,
   query,
   orderByChild,
-  limitToLast,
 } from '@firebase/database';
 import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Guru1, Guru2, Guru3, ILNullPhoto} from '../../assets';
+import {ILNullPhoto} from '../../assets';
 import {
   TeacherCategory,
   Gap,
