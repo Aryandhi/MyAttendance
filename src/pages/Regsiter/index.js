@@ -1,11 +1,11 @@
 import {createUserWithEmailAndPassword, getAuth} from 'firebase/auth';
 import {getDatabase, ref, set} from 'firebase/database';
-import React, {useState} from 'react';
+import React from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
-import {showMessage} from 'react-native-flash-message';
+import {useDispatch} from 'react-redux';
 import {Button, Gap, Header, Input, Loading} from '../../components';
 import {Fire} from '../../config';
-import {colors, storeData, useForm} from '../../utils';
+import {colors, showError, storeData, useForm} from '../../utils';
 
 const Register = ({navigation}) => {
   const [form, setForm] = useForm({
@@ -13,19 +13,18 @@ const Register = ({navigation}) => {
     profession: '',
     email: '',
     password: '',
-    uid: user.uid,
+    // uid: user.uid,
   });
 
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const onContinue = () => {
-    console.log(form);
-    setLoading(true);
+    dispatch({type: 'SET_LOADING', value: true});
     const auth = getAuth(Fire);
     createUserWithEmailAndPassword(auth, form.email, form.password)
       .then(userCredential => {
         // Signed in
-        setLoading(false);
+        dispatch({type: 'SET_LOADING', value: false});
         setForm('reset');
         const user = userCredential.user;
         const data = {
@@ -48,19 +47,12 @@ const Register = ({navigation}) => {
       .catch(error => {
         // const errorCode = error.code;
         const errorMessage = error.message;
-        setLoading(false);
-        showMessage({
-          message: errorMessage,
-          type: 'default',
-          backgroundColor: colors.error,
-          color: colors.white,
-        });
-        console.log('error: ', error);
+        dispatch({type: 'SET_LOADING', value: false});
+        showError(errorMessage);
       });
   };
   return (
-    <>
-      <View style={styles.page}>
+    <View style={styles.page}>
         <Header onPress={() => navigation.goBack()} title="Daftar Akun" />
         <View style={styles.content}>
           <ScrollView showsVerticalScrollIndicator={false}>
@@ -93,7 +85,6 @@ const Register = ({navigation}) => {
           </ScrollView>
         </View>
       </View>
-    </>
   );
 };
 export default Register;

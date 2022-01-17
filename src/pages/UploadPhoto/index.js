@@ -9,7 +9,7 @@ import {IconAddPhoto, IconRemovePhoto, ILNullPhoto} from '../../assets';
 import {Button, Gap, Header, Link} from '../../components';
 
 import {Fire} from '../../config';
-import {colors, fonts, storeData} from '../../utils';
+import {colors, fonts, showError, storeData} from '../../utils';
 
 const UploadPhoto = ({navigation, route}) => {
   const {fullName, profession, uid} = route.params;
@@ -22,12 +22,7 @@ const UploadPhoto = ({navigation, route}) => {
       response => {
         console.log('response: ', response);
         if (response.didCancel || response.errorMessage) {
-          showMessage({
-            message: 'oops, sepertinya anda belum memilih foto',
-            type: 'default',
-            backgroundColor: colors.error,
-            color: colors.white,
-          });
+          showError('oops, sepertinya anda belum memilih foto');
         } else {
           console.log('response getImage: ', response);
           const source = {uri: response.uri};
