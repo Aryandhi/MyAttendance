@@ -9,6 +9,7 @@ import Information from './Information';
 import ChooseTeacher from './ChooseTeacher';
 import Chatting from './Chatting';
 import UserProfile from './UserProfile';
+import UpdateProfile from './UpdateProfile';
 export {
   Splash,
   GetStarted,
@@ -20,5 +21,6 @@ export {
   Information,
   ChooseTeacher,
   Chatting,
-  UserProfile
+  UserProfile,
+  UpdateProfile
 };
