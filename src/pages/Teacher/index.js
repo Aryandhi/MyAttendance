@@ -8,7 +8,7 @@ import {
   RatedTeacher,
 } from '../../components';
 import {colors, fonts} from '../../utils';
-import {JSONCategoryTeacher} from '../../assets';
+import {Guru1, Guru2, Guru3, JSONCategoryTeacher} from '../../assets';
 
 const Teacher = ({navigation}) => {
   return (
@@ -41,9 +41,24 @@ const Teacher = ({navigation}) => {
           </View>
           <View style={styles.wrapperSection}>
             <Text style={styles.sectionLabel}>Top Rated Teachers</Text>
-            <RatedTeacher />
-            <RatedTeacher />
-            <RatedTeacher />
+            <RatedTeacher
+              name="Hendro Junawarko Spd"
+              desc="Matematika"
+              avatar={Guru1}
+              onPress={() => navigation.navigate('TeacherProfile')}
+            />
+            <RatedTeacher
+              name="Sri Pudji Spd"
+              desc="Kimia"
+              avatar={Guru2}
+              onPress={() => navigation.navigate('TeacherProfile')}
+            />
+            <RatedTeacher
+              name="Ratna Spd"
+              desc="Fisika"
+              avatar={Guru3}
+              onPress={() => navigation.navigate('TeacherProfile')}
+            />
             <Text style={styles.sectionLabel}>Informasi Absensi dan Tugas</Text>
           </View>
           <NewsItem />

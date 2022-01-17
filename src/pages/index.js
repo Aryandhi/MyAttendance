@@ -10,6 +10,7 @@ import ChooseTeacher from './ChooseTeacher';
 import Chatting from './Chatting';
 import UserProfile from './UserProfile';
 import UpdateProfile from './UpdateProfile';
+import TeacherProfile from './TeacherProfile';
 export {
   Splash,
   GetStarted,
@@ -22,5 +23,6 @@ export {
   ChooseTeacher,
   Chatting,
   UserProfile,
-  UpdateProfile
+  UpdateProfile,
+  TeacherProfile,
 };

@@ -1,13 +1,13 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {User1, IconRemovePhoto} from '../../../assets';
+import {Guru1, IconRemovePhoto} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
 const Profile = ({name, desc}) => {
   return (
     <View style={styles.container}>
       <View style={styles.borderProfile}>
-        <Image source={User1} style={styles.avatar} />
+        <Image source={Guru1} style={styles.avatar} />
         <IconRemovePhoto style={styles.removePhoto} />
       </View>
       {name && (
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[600],
     color: colors.text.primary,
     marginTop: 16,
+    textAlign: 'center',
   },
   removePhoto: {position: 'absolute', right: 8, bottom: 8},
   profession: {
@@ -46,5 +47,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[600],
     color: colors.text.secondary,
     marginTop: 2,
+    textAlign: 'center',
   },
 });
