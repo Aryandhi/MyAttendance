@@ -13,7 +13,7 @@ const Register = ({navigation}) => {
     profession: '',
     email: '',
     password: '',
-    // uid: user.uid,
+    
   });
 
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const Register = ({navigation}) => {
     const auth = getAuth(Fire);
     createUserWithEmailAndPassword(auth, form.email, form.password)
       .then(userCredential => {
-        // Signed in
+        
         dispatch({type: 'SET_LOADING', value: false});
         setForm('reset');
         const user = userCredential.user;
@@ -41,11 +41,9 @@ const Register = ({navigation}) => {
         navigation.navigate('UploadPhoto', data);
         console.log('user: ', user);
       })
-      // .then(success => {
-      //   console.log('register success: ', success);
-      // })
+      
       .catch(error => {
-        // const errorCode = error.code;
+        
         const errorMessage = error.message;
         dispatch({type: 'SET_LOADING', value: false});
         showError(errorMessage);
