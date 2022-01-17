@@ -3,15 +3,23 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Button, Gap, Header, Profile, ProfileItem} from '../../components';
 import {colors} from '../../utils';
 
-const TeacherProfile = ({navigation}) => {
+const TeacherProfile = ({navigation, route}) => {
+  const dataTeacher = route.params;
   return (
     <View style={styles.page}>
       <Header title="Teacher Profile" onPress={() => navigation.goBack()} />
-      <Profile name="Hendro Junawarko S.Kom" desc="Matematika" />
+      <Profile
+        name={dataTeacher.data.fullName}
+        desc={dataTeacher.data.profession}
+        photoURL={{uri: dataTeacher.data.photo}}
+      />
       <Gap height={10} />
-      <ProfileItem label="Alumnus" value="Universitas Teknokrat, 2023" />
-      <ProfileItem label="SMK 2 Mei" value="Jl ZA Pagar Alam, Bandar Lampung" />
-      <ProfileItem label="NIP." value="0000116622081996" />
+      <ProfileItem label="Alumnus" value={dataTeacher.data.university} />
+      <ProfileItem
+        label="Tempat Praktik"
+        value={dataTeacher.data.hospital_address}
+      />
+      <ProfileItem label="No. STR" value={dataTeacher.data.str_number} />
       <View style={styles.action}>
         <Button
           title="Start Consultation"

@@ -141,7 +141,7 @@ const Teacher = ({navigation}) => {
                   name={teacher.data.fullName}
                   desc={teacher.data.profession}
                   avatar={{uri: teacher.data.photo}}
-                  onPress={() => navigation.navigate('TeacherProfile')}
+                  onPress={() => navigation.navigate('TeacherProfile', teacher)}
                 />
               );
             })}
@@ -153,6 +153,7 @@ const Teacher = ({navigation}) => {
                 key={item.id}
                 title={item.title}
                 date={item.date}
+                body={item.body}
                 image={item.image}
               />
             );
