@@ -5,7 +5,7 @@ import {ScrollView, StyleSheet, View} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
 import {Button, Gap, Header, Input, Loading} from '../../components';
 import {Fire} from '../../config';
-import {colors, useForm} from '../../utils';
+import {colors, storeData, useForm} from '../../utils';
 
 const Register = ({navigation}) => {
   const [form, setForm] = useForm({
@@ -35,6 +35,9 @@ const Register = ({navigation}) => {
 
         const db = getDatabase(Fire);
         set(ref(db, 'users/' + userCredential.user.uid + '/'), data);
+
+        storeData('user', data);
+        navigation.navigate('UploadPhoto');
         console.log('user credential: ', user);
       })
       // .then(success => {
