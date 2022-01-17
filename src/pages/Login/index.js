@@ -17,26 +17,26 @@ const Login = ({navigation}) => {
   const dispatch = useDispatch();
 
   const login = () => {
-    console.log('form: ', form);
+    // console.log('form: ', form);
     dispatch({type: 'SET_LOADING', value: true});
     const auth = getAuth(Fire);
     signInWithEmailAndPassword(auth, form.email, form.password)
       .then(userCredential => {
         const user = userCredential.user;
-        console.log('success: ', user);
+        // console.log('success: ', user);
         dispatch({type: 'SET_LOADING', value: false});
         const dbRef = ref(getDatabase(Fire));
 
-        get(child(dbRef, `users/${user.uid}/`)).then(snapshot => {
-          if (snapshot.exists()) {
-            storeData('user', snapshot.val());
+        get(child(dbRef, `users/${user.uid}/`)).then(value => {
+          if (value.exists()) {
+            storeData('user', value.val());
             navigation.replace('MainApp');
           }
         });
       })
       .catch(error => {
         const errorMessage = error.message;
-        console.log('error: ', error);
+        // console.log('error: ', error);
         dispatch({type: 'SET_LOADING', value: false});
         showError(errorMessage);
       });

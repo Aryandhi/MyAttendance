@@ -3,17 +3,15 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import {News1} from '../../../assets';
 import {fonts, colors} from '../../../utils';
 
-const NewsItem = () => {
+const NewsItem = ({title, body, date, image}) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleWrapper}>
-        <Text style={styles.title}>Kelas XA</Text>
-        <Text style={styles.news}>
-          Alfa : Mansori, Bowo, Izin : Tubagus, Tugas: Matematika
-        </Text>
-        <Text style={styles.date}>Today</Text>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title}>{body}</Text>
+        <Text style={styles.date}>{date}</Text>
       </View>
-      <Image source={News1} style={styles.image} />
+      <Image source={{uri: image}} style={styles.image} />
     </View>
   );
 };
