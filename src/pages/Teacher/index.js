@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {
   TeacherCategory,
@@ -7,10 +7,15 @@ import {
   NewsItem,
   RatedTeacher,
 } from '../../components';
-import {colors, fonts} from '../../utils';
+import {colors, fonts, getData} from '../../utils';
 import {Guru1, Guru2, Guru3, JSONCategoryTeacher} from '../../assets';
 
 const Teacher = ({navigation}) => {
+  useEffect(() => {
+    getData('user').then(res => {
+      console.log('data user: ', res);
+    });
+  }, []);
   return (
     <View style={styles.page}>
       <View style={styles.content}>
