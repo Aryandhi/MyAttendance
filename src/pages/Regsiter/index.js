@@ -23,6 +23,7 @@ const Register = ({navigation}) => {
       .then(userCredential => {
         // Signed in
         setLoading(false);
+        setForm('reset');
         const user = userCredential.user;
         console.log('user credential: ', user);
       })
