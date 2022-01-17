@@ -1,23 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {ILNullPhoto} from '../../../assets';
-import {colors, fonts, getData} from '../../../utils';
+import {colors, fonts} from '../../../utils';
 
-const HomeProfile = ({onPress}) => {
-  const [profile, setProfile] = useState({
-    photoURL: ILNullPhoto,
-    fullName: '',
-    profession: '',
-  });
-  useEffect(() => {
-    getData('user').then(res => {
-      // console.log('data user: ', res);
-      const data = res;
-      data.photoURL = {uri: res.photoURL};
-      // console.log('new profile', data);
-      setProfile(data);
-    });
-  }, []);
+const HomeProfile = ({onPress, profile}) => {
+  // dihapus wo
+  // const [profile, setProfile] = useState({
+  //   photoURL: ILNullPhoto,
+  //   fullName: '',
+  //   profession: '',
+  // });
+  // useEffect(() => {
+  //   getData('user').then(res => {
+  //     // console.log('data user: ', res);
+  //     const data = res;
+  //     data.photoURL = {uri: res.photoURL};
+  //     // console.log('new profile', data);
+  //     setProfile(data);
+  //   });
+  // }, []);
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image source={profile.photoURL} style={styles.avatar} />

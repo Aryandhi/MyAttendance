@@ -9,12 +9,17 @@ import {
   RatedTeacher,
 } from '../../components';
 import {Fire} from '../../config';
-import {colors, fonts, showError} from '../../utils';
-import {Guru1, Guru2, Guru3, JSONCategoryTeacher} from '../../assets';
+import {colors, fonts, showError, getData} from '../../utils';
+import {Guru1, Guru2, Guru3, ILNullPhoto} from '../../assets';
 
 const Teacher = ({navigation}) => {
   const [news, setNews] = useState([]);
   const [categoryTeacher, setCategoryTeacher] = useState([]);
+  const [profile, setProfile] = useState({
+    photoURL: ILNullPhoto,
+    fullName: '',
+    profession: '',
+  });
   useEffect(() => {
     const dbRef = ref(getDatabase(Fire));
     get(child(dbRef, `news/`))
@@ -36,6 +41,11 @@ const Teacher = ({navigation}) => {
       .catch(error => {
         showError(error);
       });
+    getData('user').then(res => {
+      const data = res;
+      data.photoURL = {uri: res.photoURL};
+      setProfile(data);
+    });
   }, []);
   return (
     <View style={styles.page}>
@@ -43,7 +53,10 @@ const Teacher = ({navigation}) => {
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.wrapperSection}>
             <Gap height={30} />
-            <HomeProfile onPress={() => navigation.navigate('UserProfile')} />
+            <HomeProfile
+              profile={profile}
+              onPress={() => navigation.navigate('UserProfile')}
+            />
             <Text style={styles.welcome}>
               Mau konsultasi dengan siapa hari ini?
             </Text>

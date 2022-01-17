@@ -11,13 +11,11 @@ const MainApp = () => {
   console.log('state global: ', stateGlobal);
   return (
     <>
-      <Provider store={store}>
-        <NavigationContainer>
-          <Router />
-        </NavigationContainer>
-        <FlashMessage position="top" />
-        {stateGlobal.loading && <Loading />}
-      </Provider>
+      <NavigationContainer>
+        <Router />
+      </NavigationContainer>
+      <FlashMessage position="top" />
+      {stateGlobal.loading && <Loading />}
     </>
   );
 };
