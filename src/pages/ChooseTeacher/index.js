@@ -62,7 +62,7 @@ const ChooseTeacher = ({navigation, route}) => {
             profile={{uri: teacher.data.photo}}
             name={teacher.data.fullName}
             desc={teacher.data.gender}
-            onPress={() => navigation.navigate('Chatting')}
+            onPress={() => navigation.navigate('TeacherProfile', teacher)}
           />
         );
       })}
