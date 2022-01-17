@@ -68,7 +68,7 @@ const Teacher = ({navigation}) => {
 
   const getCategoryTeacher = () => {
     const dbRef = ref(getDatabase(Fire));
-    get(child(dbRef, `category_teacher/`))
+    get(child(dbRef, 'category_teacher/'))
       .then(value => {
         if (value.exists()) {
           setCategoryTeacher(value.val());
@@ -81,7 +81,7 @@ const Teacher = ({navigation}) => {
 
   const getNews = () => {
     const dbRef = ref(getDatabase(Fire));
-    get(child(dbRef, `news/`))
+    get(child(dbRef, 'news/'))
       .then(value => {
         if (value.exists()) {
           setNews(value.val());
@@ -124,7 +124,7 @@ const Teacher = ({navigation}) => {
                     <TeacherCategory
                       key={item.id}
                       category={item.category}
-                      onPress={() => navigation.navigate('ChooseTeacher')}
+                      onPress={() => navigation.navigate('ChooseTeacher', item)}
                     />
                   );
                 })}

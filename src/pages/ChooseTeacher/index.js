@@ -1,28 +1,71 @@
-import React from 'react';
+import {
+  equalTo,
+  get,
+  getDatabase,
+  orderByChild,
+  query,
+  ref,
+} from '@firebase/database';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Guru1} from '../../assets';
 import {Header, List} from '../../components';
+import {Fire} from '../../config';
 import {colors} from '../../utils';
 
-const ChooseTeacher = ({navigation}) => {
+const ChooseTeacher = ({navigation, route}) => {
+  const itemCategory = route.params;
+  const [listTeacher, setListTeacher] = useState([]);
+  useEffect(() => {
+    callTeacherByCategory(itemCategory.category);
+  }, []);
+
+  const callTeacherByCategory = category => {
+    const db = getDatabase(Fire);
+
+    const listTeacher = query(
+      ref(db, 'teachers/'),
+      orderByChild('category'),
+      equalTo(category),
+    );
+
+    get(listTeacher)
+      .then(value => {
+        if (value.exists()) {
+          const oldData = value.val();
+          const data = [];
+          Object.keys(oldData).map(item => {
+            data.push({
+              id: item,
+              data: oldData[item],
+            });
+          });
+          setListTeacher(data);
+        }
+      })
+      .catch(error => {
+        showError(error);
+      });
+  };
   return (
     <View style={styles.page}>
       <Header
         type="dark"
-        title="Pilih Guru Matematika"
+        title={`Pilih ${itemCategory.category}`}
         onPress={() => navigation.goBack()}
       />
-      <List
-        type="next"
-        profile={Guru1}
-        name="Hendro Junawarko"
-        desc="Pria"
-        onPress={() => navigation.navigate('Chatting')}
-      />
-      <List type="next" profile={Guru1} name="Hendro Junawarko" desc="Pria" />
-      <List type="next" profile={Guru1} name="Hendro Junawarko" desc="Pria" />
-      <List type="next" profile={Guru1} name="Hendro Junawarko" desc="Pria" />
-      <List type="next" profile={Guru1} name="Hendro Junawarko" desc="Pria" />
+      {listTeacher.map(teacher => {
+        return (
+          <List
+            type="next"
+            key={teacher.id}
+            profile={{uri: teacher.data.photo}}
+            name={teacher.data.fullName}
+            desc={teacher.data.gender}
+            onPress={() => navigation.navigate('Chatting')}
+          />
+        );
+      })}
     </View>
   );
 };
