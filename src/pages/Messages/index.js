@@ -4,7 +4,7 @@ import {Guru1, Guru2, Guru3} from '../../assets';
 import {List} from '../../components';
 import {colors, fonts} from '../../utils';
 
-const Messages = () => {
+const Messages = ({navigation}) => {
   const [teachers] = useState([
     {
       id: 1,
@@ -37,6 +37,7 @@ const Messages = () => {
               profile={teacher.profile}
               name={teacher.name}
               desc={teacher.desc}
+              onPress={() => navigation.navigate('Chatting')}
             />
           );
         })}

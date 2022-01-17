@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Guru4} from '../../assets';
+import {Guru1} from '../../assets';
 import {Header, List} from '../../components';
 import {colors} from '../../utils';
 
@@ -14,15 +14,15 @@ const ChooseTeacher = ({navigation}) => {
       />
       <List
         type="next"
-        profile={Guru4}
-        name="Alexander Jennie"
-        desc="Wanita"
+        profile={Guru1}
+        name="Hendro Junawarko"
+        desc="Pria"
         onPress={() => navigation.navigate('Chatting')}
       />
-      <List type="next" profile={Guru4} name="Alexander Jennie" desc="Wanita" />
-      <List type="next" profile={Guru4} name="Alexander Jennie" desc="Wanita" />
-      <List type="next" profile={Guru4} name="Alexander Jennie" desc="Wanita" />
-      <List type="next" profile={Guru4} name="Alexander Jennie" desc="Wanita" />
+      <List type="next" profile={Guru1} name="Hendro Junawarko" desc="Pria" />
+      <List type="next" profile={Guru1} name="Hendro Junawarko" desc="Pria" />
+      <List type="next" profile={Guru1} name="Hendro Junawarko" desc="Pria" />
+      <List type="next" profile={Guru1} name="Hendro Junawarko" desc="Pria" />
     </View>
   );
 };
