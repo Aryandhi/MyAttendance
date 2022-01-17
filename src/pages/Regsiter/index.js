@@ -13,6 +13,7 @@ const Register = ({navigation}) => {
     profession: '',
     email: '',
     password: '',
+    uid: user.uid,
   });
 
   const [loading, setLoading] = useState(false);
@@ -35,11 +36,11 @@ const Register = ({navigation}) => {
         };
 
         const db = getDatabase(Fire);
-        set(ref(db, 'users/' + userCredential.user.uid + '/'), data);
+        set(ref(db, `users/${user.uid}/`), data);
 
         storeData('user', data);
         navigation.navigate('UploadPhoto', data);
-        console.log('user credential: ', user);
+        console.log('user: ', user);
       })
       // .then(success => {
       //   console.log('register success: ', success);

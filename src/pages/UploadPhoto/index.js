@@ -46,7 +46,7 @@ const UploadPhoto = ({navigation, route}) => {
     data.photoURL = photoForDB;
 
     const updates = {};
-    updates['/users/' + uid + '/'] = data;
+    updates[`/users/${uid}/`] = data;
     update(ref(db), updates);
 
     storeData('user', data);

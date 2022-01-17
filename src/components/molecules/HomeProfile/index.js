@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {User1, ILNullPhoto} from '../../../assets';
+import {DummyUser, ILNullPhoto} from '../../../assets';
 import {colors, fonts, getData} from '../../../utils';
 
 const HomeProfile = ({onPress}) => {
