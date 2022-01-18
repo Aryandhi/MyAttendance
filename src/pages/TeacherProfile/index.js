@@ -23,7 +23,7 @@ const TeacherProfile = ({navigation, route}) => {
       <View style={styles.action}>
         <Button
           title="Start Consultation"
-          onPress={() => navigation.navigate('Chatting')}
+          onPress={() => navigation.navigate('Chatting', dataTeacher)}
         />
       </View>
     </View>
