@@ -74,7 +74,7 @@ const Teacher = ({navigation}) => {
           const data = value.val();
           const filterData = data.filter(el => el !== null);
 
-          setCategoryDoctor(filterData);
+          setCategoryTeacher(filterData);
         }
       })
       .catch(error => {

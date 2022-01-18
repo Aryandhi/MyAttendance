@@ -11,7 +11,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Guru1} from '../../assets';
 import {Header, List} from '../../components';
 import {Fire} from '../../config';
-import {colors} from '../../utils';
+import {colors, showError} from '../../utils';
 
 const ChooseTeacher = ({navigation, route}) => {
   const itemCategory = route.params;

@@ -2,7 +2,7 @@ import {child, get, getDatabase, ref} from '@firebase/database';
 import React, {useEffect, useState} from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import {ListInformation} from '../../components';
-import {colors, fonts} from '../../utils';
+import {colors, fonts, showError} from '../../utils';
 import {ILSMKBG} from '../../assets';
 import {Fire} from '../../config';
 
