@@ -34,8 +34,10 @@ const Teacher = ({navigation}) => {
     getNews();
     getCategoryTeacher();
     getTopRatedTeacher();
-    getUser();
-  }, []);
+    navigation.addListener('focus', () => {
+      getUserData();
+    });
+  }, [navigation]);
 
   const getTopRatedTeacher = () => {
     const db = getDatabase(Fire);
@@ -103,7 +105,7 @@ const Teacher = ({navigation}) => {
     );
   };
 
-  const getUser = () => {
+  const getUserData = () => {
     getData('user').then(res => {
       const data = res;
       data.photoURL =

@@ -17,7 +17,7 @@ const ChooseTeacher = ({navigation, route}) => {
   const [listTeacher, setListTeacher] = useState([]);
   useEffect(() => {
     callTeacherByCategory(itemCategory.category);
-  }, []);
+  }, [itemCategory.category]);
 
   const callTeacherByCategory = category => {
     const db = getDatabase(Fire);
