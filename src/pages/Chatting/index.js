@@ -69,13 +69,29 @@ const Chatting = ({navigation, route}) => {
 
     const chatID = `${user.uid}_${dataTeacher.data.uid}`;
     const urlFirebase = `chatting/${chatID}/allChat/${setDateChat(today)}`;
-
+    const urlMessageUser = `messages/${user.uid}/${chatID}`;
+    const urlMessageTeacher = `messages/${dataTeacher.data.uid}/${chatID}`;
+    const dataHistoryChatForUser = {
+      lastContentChat: chatContent,
+      lastChatDate: today.getTime(),
+      uidPartner: dataTeacher.data.uid,
+    };
+    const dataHistoryChatForTeacher = {
+      lastContentChat: chatContent,
+      lastChatDate: today.getTime(),
+      uidPartner: user.uid,
+    };
     const db = getDatabase(Fire);
     const allChatList = ref(db, urlFirebase);
     const newChat = push(allChatList);
     set(newChat, data)
       .then(() => {
         setChatContent('');
+        // set history for user
+        set(ref(db, urlMessageUser), dataHistoryChatForUser);
+
+        // set history for teacher
+        set(ref(db, urlMessageTeacher), dataHistoryChatForTeacher);
       })
       .catch(error => {
         showError(error);
