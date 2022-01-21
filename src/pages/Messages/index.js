@@ -1,10 +1,9 @@
-import {getDatabase, onValue, ref, get, child} from '@firebase/database';
+import {child, get, getDatabase, onValue, ref} from '@firebase/database';
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Guru1, Guru2, Guru3} from '../../assets';
 import {List} from '../../components';
 import {Fire} from '../../config';
-import {colors, fonts, getData, showError} from '../../utils';
+import {colors, fonts, getData} from '../../utils';
 
 const Messages = ({navigation}) => {
   const [user, setUser] = useState({});
@@ -49,13 +48,17 @@ const Messages = ({navigation}) => {
       <View style={styles.content}>
         <Text style={styles.title}>Messages</Text>
         {historyChat.map(chat => {
+          const dataTeacher = {
+            id: chat.detailTeacher.uid,
+            data: chat.detailTeacher,
+          };
           return (
             <List
               key={chat.id}
               profile={{uri: chat.detailTeacher.photo}}
               name={chat.detailTeacher.fullName}
               desc={chat.lastContentChat}
-              onPress={() => navigation.navigate('Chatting')}
+              onPress={() => navigation.navigate('Chatting', dataTeacher)}
             />
           );
         })}

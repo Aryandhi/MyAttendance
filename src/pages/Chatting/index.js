@@ -131,6 +131,7 @@ const Chatting = ({navigation, route}) => {
       </View>
       <InputChat
         value={chatContent}
+        teacherName={dataTeacher.data.fullName}
         onChangeText={value => setChatContent(value)}
         onButtonPress={chatSend}
       />
