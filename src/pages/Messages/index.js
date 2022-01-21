@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import {getDatabase, push, ref, set, onValue} from '@firebase/database';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Guru1, Guru2, Guru3} from '../../assets';
 import {List} from '../../components';
-import {colors, fonts} from '../../utils';
+import {colors, fonts, getData} from '../../utils';
+import {Fire} from '../../config';
 
 const Messages = ({navigation}) => {
   const [teachers] = useState([
@@ -25,18 +27,46 @@ const Messages = ({navigation}) => {
       desc: 'Oke menurut Bu guru bagaimana unt...',
     },
   ]);
+  const [user, setUser] = useState({});
+  const [historyChat, setHistoryChat] = useState([]);
 
+  useEffect(() => {
+    getDataUserFromLocal();
+    const urlHistory = `messages/${user.uid}/`;
+    const db = getDatabase(Fire);
+    const getHistoryChat = ref(db, urlHistory);
+    onValue(getHistoryChat, snapshot => {
+      if (snapshot.exists()) {
+        const oldData = snapshot.val();
+        const data = [];
+        Object.keys(oldData).map(key => {
+          data.push({
+            id: key,
+            ...oldData[key],
+          });
+        });
+        console.log('new data history: ', data);
+        setHistoryChat(data);
+      }
+    });
+  }, [user.uid]);
+
+  const getDataUserFromLocal = () => {
+    getData('user').then(res => {
+      setUser(res);
+    });
+  };
   return (
     <View style={styles.page}>
       <View style={styles.content}>
         <Text style={styles.title}>Messages</Text>
-        {teachers.map(teacher => {
+        {historyChat.map(chat => {
           return (
             <List
-              key={teacher.id}
-              profile={teacher.profile}
-              name={teacher.name}
-              desc={teacher.desc}
+              key={chat.id}
+              profile={chat.uidPartner}
+              name={chat.uidPartner}
+              desc={chat.uidPartner}
               onPress={() => navigation.navigate('Chatting')}
             />
           );
