@@ -26,32 +26,33 @@ const Chatting = ({navigation, route}) => {
     const db = getDatabase(Fire);
     const getChat = ref(db, urlFirebase);
     onValue(getChat, snapshot => {
-      const dataSnapshot = snapshot.val();
-      const allDataChat = [];
-      Object.keys(dataSnapshot).map(key => {
-        const dataChat = dataSnapshot[key];
-        const newDataChat = [];
+      if (snapshot.exists()) {
+        const dataSnapshot = snapshot.val();
+        const allDataChat = [];
+        Object.keys(dataSnapshot).map(key => {
+          const dataChat = dataSnapshot[key];
+          const newDataChat = [];
 
-        Object.keys(dataChat).map(itemChat => {
-          newDataChat.push({
-            id: itemChat,
-            data: dataChat[itemChat],
+          Object.keys(dataChat).map(itemChat => {
+            newDataChat.push({
+              id: itemChat,
+              data: dataChat[itemChat],
+            });
+          });
+
+          allDataChat.push({
+            id: key,
+            data: newDataChat,
           });
         });
-
-        allDataChat.push({
-          id: key,
-          data: newDataChat,
-        });
-      });
-      console.log('all data chat: ', allDataChat);
-      setChatData(allDataChat);
+        console.log('all data chat: ', allDataChat);
+        setChatData(allDataChat);
+      }
     });
-  }, [dataDoctor.data.uid, user.uid]);
+  }, [dataTeacher.data.uid, user.uid]);
 
   const getDataUserFromLocal = () => {
     getData('user').then(res => {
-      console.log('user login: ', res);
       setUser(res);
     });
   };
@@ -59,23 +60,16 @@ const Chatting = ({navigation, route}) => {
   const chatSend = () => {
     console.log('user: ', user);
     const today = new Date();
-    const hour = today.getHours();
-    const minutes = today.getMinutes();
-    const year = today.getFullYear();
-    const month = today.getMonth() + 1;
-    const date = today.getDate();
     const data = {
       sendBy: user.uid,
       chatDate: today.getTime(),
       chatTime: getChatTime(today),
       chatContent: chatContent,
     };
-    const chatID = `${user.uid}_${dataTeacher.data.uid}`;
 
+    const chatID = `${user.uid}_${dataTeacher.data.uid}`;
     const urlFirebase = `chatting/${chatID}/allChat/${setDateChat(today)}`;
-    // console.log('chat yang akan dikirim: ', data);
-    // console.log('url: ', urlFirebase);
-    // kirim ke firebase
+
     const db = getDatabase(Fire);
     const allChatList = ref(db, urlFirebase);
     const newChat = push(allChatList);
@@ -87,6 +81,7 @@ const Chatting = ({navigation, route}) => {
         showError(error);
       });
   };
+
   return (
     <View style={styles.page}>
       <Header
