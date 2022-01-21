@@ -8,7 +8,6 @@ import {
 } from '@firebase/database';
 import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Guru1} from '../../assets';
 import {Header, List} from '../../components';
 import {Fire} from '../../config';
 import {colors, showError} from '../../utils';
@@ -62,7 +61,7 @@ const ChooseTeacher = ({navigation, route}) => {
             profile={{uri: teacher.data.photo}}
             name={teacher.data.fullName}
             desc={teacher.data.gender}
-            onPress={() => navigation.navigate('TeacherProfile', teacher)}
+            onPress={() => navigation.navigate('Chatting')}
           />
         );
       })}

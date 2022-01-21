@@ -6,16 +6,15 @@ import {colors} from '../../../utils';
 const BtnIconSend = ({disable, onPress}) => {
   if (disable) {
     return (
-      <TouchableOpacity style={styles.container(disable)} onPress={onPress}>
-        <IconSendLight />
-      </TouchableOpacity>
+      <View style={styles.container(disable)}>
+        <IconSendDark />
+      </View>
     );
   }
   return (
-    <View style={styles.container(disable)}>
-      {disable && <IconSendDark />}
-      {!disable && <IconSendLight />}
-    </View>
+    <TouchableOpacity style={styles.container(disable)} onPress={onPress}>
+      <IconSendLight />
+    </TouchableOpacity>
   );
 };
 

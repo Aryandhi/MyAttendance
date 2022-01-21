@@ -16,8 +16,8 @@ const TeacherProfile = ({navigation, route}) => {
       <Gap height={10} />
       <ProfileItem label="Alumnus" value={dataTeacher.data.university} />
       <ProfileItem
-        label="Tempat Praktik"
-        value={dataTeacher.data.hospital_address}
+        label="Tempat Mengajar"
+        value={dataTeacher.data.school_address}
       />
       <ProfileItem label="No. STR" value={dataTeacher.data.str_number} />
       <View style={styles.action}>

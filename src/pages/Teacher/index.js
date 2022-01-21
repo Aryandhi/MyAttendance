@@ -2,10 +2,10 @@ import {
   child,
   get,
   getDatabase,
-  limitToLast,
   ref,
   query,
   orderByChild,
+  limitToLast,
 } from '@firebase/database';
 import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
@@ -147,7 +147,9 @@ const Teacher = ({navigation}) => {
                   name={teacher.data.fullName}
                   desc={teacher.data.profession}
                   avatar={{uri: teacher.data.photo}}
-                  onPress={() => navigation.navigate('TeacherProfile', teacher)}
+                  onPress={
+                    (() => navigation.navigate('TeacherProfile'), teacher)
+                  }
                 />
               );
             })}
