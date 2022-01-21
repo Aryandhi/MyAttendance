@@ -101,9 +101,10 @@ const Chatting = ({navigation, route}) => {
                   return (
                     <ChatItem
                       key={itemChat.id}
-                      isMe={itemChat.data.sendBy === user.uid}
+                      isMe={isMe}
                       text={itemChat.data.chatContent}
                       date={itemChat.data.chatTime}
+                      photo={isMe ? null : {uri: dataTeacher.data.photo}}
                     />
                   );
                 })}
