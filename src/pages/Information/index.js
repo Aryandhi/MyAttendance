@@ -1,4 +1,4 @@
-import {child, get, getDatabase, ref} from '@firebase/database';
+import {getDatabase, onValue, ref} from '@firebase/database';
 import React, {useEffect, useState} from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import {ListInformation} from '../../components';
@@ -9,16 +9,18 @@ import {Fire} from '../../config';
 const Information = () => {
   const [informations, setInformations] = useState([]);
   useEffect(() => {
-    const dbRef = ref(getDatabase(Fire));
-    get(child(dbRef, 'informations/'))
-      .then(value => {
+    const db = getDatabase(Fire);
+    onValue(
+      ref(db, 'informations/'),
+      value => {
         if (value.exists()) {
           setInformations(value.val());
         }
-      })
-      .catch(error => {
-        showError(error);
-      });
+      },
+      {
+        onlyOnce: true,
+      },
+    );
   }, []);
   return (
     <View style={styles.page}>

@@ -6,6 +6,7 @@ import {
   query,
   orderByChild,
   limitToLast,
+  onValue,
 } from '@firebase/database';
 import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
@@ -67,35 +68,39 @@ const Teacher = ({navigation}) => {
   };
 
   const getCategoryTeacher = () => {
-    const dbRef = ref(getDatabase(Fire));
-    get(child(dbRef, 'category_teacher/'))
-      .then(value => {
+    const db = getDatabase(Fire);
+    onValue(
+      ref(db, 'category_teacher/'),
+      value => {
         if (value.exists()) {
           const data = value.val();
           const filterData = data.filter(el => el !== null);
 
           setCategoryTeacher(filterData);
         }
-      })
-      .catch(error => {
-        showError(error);
-      });
+      },
+      {
+        onlyOnce: true,
+      },
+    );
   };
 
   const getNews = () => {
-    const dbRef = ref(getDatabase(Fire));
-    get(child(dbRef, 'news/'))
-      .then(value => {
+    const db = getDatabase(Fire);
+    onValue(
+      ref(db, 'news/'),
+      value => {
         if (value.exists()) {
           const data = value.val();
           const filterData = data.filter(el => el !== null);
 
           setNews(filterData);
         }
-      })
-      .catch(error => {
-        showError(error);
-      });
+      },
+      {
+        onlyOnce: true,
+      },
+    );
   };
 
   const getUser = () => {
