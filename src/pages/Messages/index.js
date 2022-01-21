@@ -1,10 +1,10 @@
-import {getDatabase, push, ref, set, onValue} from '@firebase/database';
-import React, {useState, useEffect} from 'react';
+import {getDatabase, ref, onValue} from '@firebase/database';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Guru1, Guru2, Guru3} from '../../assets';
 import {List} from '../../components';
-import {colors, fonts, getData} from '../../utils';
 import {Fire} from '../../config';
+import {colors, fonts, getData} from '../../utils';
 
 const Messages = ({navigation}) => {
   const [teachers] = useState([
@@ -66,7 +66,7 @@ const Messages = ({navigation}) => {
               key={chat.id}
               profile={chat.uidPartner}
               name={chat.uidPartner}
-              desc={chat.uidPartner}
+              desc={chat.lastContentChat}
               onPress={() => navigation.navigate('Chatting')}
             />
           );
