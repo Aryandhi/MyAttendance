@@ -11,11 +11,9 @@ const Splash = ({navigation}) => {
     const unsubscribe = onAuthStateChanged(auth, user => {
       setTimeout(() => {
         if (user) {
-          
-          console.log('user: ', user);
+          // console.log('user: ', user);
           navigation.replace('MainApp');
         } else {
-          
           navigation.replace('GetStarted');
         }
       }, 3000);
