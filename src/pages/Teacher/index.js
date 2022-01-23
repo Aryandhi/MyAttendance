@@ -31,15 +31,15 @@ const Teacher = ({navigation}) => {
     profession: '',
   });
   useEffect(() => {
-    getNews();
     getCategoryTeacher();
-    getTopRatedTeacher();
+    getTopRatedTeachers();
+    getNews();
     navigation.addListener('focus', () => {
       getUserData();
     });
   }, [navigation]);
 
-  const getTopRatedTeacher = () => {
+  const getTopRatedTeachers = () => {
     const db = getDatabase(Fire);
 
     const topRatedTeacher = query(
@@ -50,7 +50,7 @@ const Teacher = ({navigation}) => {
 
     get(topRatedTeacher)
       .then(value => {
-        console.log('top rated teacher: ', value.val());
+        // console.log('top rated teacher: ', value.val());
         if (value.exists()) {
           const oldData = value.val();
           const data = [];
@@ -60,7 +60,7 @@ const Teacher = ({navigation}) => {
               data: oldData[key],
             });
           });
-          console.log('data hasil array: ', data);
+          // console.log('data hasil array: ', data);
           setTeachers(data);
         }
       })
@@ -125,7 +125,7 @@ const Teacher = ({navigation}) => {
               onPress={() => navigation.navigate('UserProfile')}
             />
             <Text style={styles.welcome}>
-              Mau konsultasi dengan siapa hari ini?
+              Dapatkan informasi terbaik dari Guru kami
             </Text>
           </View>
           <View style={styles.wrapperScroll}>
@@ -153,10 +153,8 @@ const Teacher = ({navigation}) => {
                   key={teacher.id}
                   name={teacher.data.fullName}
                   desc={teacher.data.profession}
-                  avatar={{uri: teacher.data.photo}}
-                  onPress={
-                    (() => navigation.navigate('TeacherProfile'), teacher)
-                  }
+                  // avatar={{uri: teacher.data.photo}}
+                  onPress={() => navigation.navigate('TeacherProfile', teacher)}
                 />
               );
             })}

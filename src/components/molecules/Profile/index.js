@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import {Guru1, IconRemovePhoto} from '../../../assets';
+import {ILNullPhoto, IconRemovePhoto} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
 const Profile = ({name, desc, isRemove, photoURL, onPress}) => {
@@ -8,7 +8,7 @@ const Profile = ({name, desc, isRemove, photoURL, onPress}) => {
     <View style={styles.container}>
       {!isRemove && (
         <View style={styles.borderProfile}>
-          <Image source={photoURL} style={styles.avatar} />
+          <Image source={ILNullPhoto} style={styles.avatar} />
         </View>
       )}
       {isRemove && (

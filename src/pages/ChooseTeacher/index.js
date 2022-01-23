@@ -50,18 +50,18 @@ const ChooseTeacher = ({navigation, route}) => {
     <View style={styles.page}>
       <Header
         type="dark"
-        title={`Pilih ${itemCategory.category}`}
+        title={`Pilih Guru ${itemCategory.category}`}
         onPress={() => navigation.goBack()}
       />
       {listTeacher.map(teacher => {
         return (
           <List
-            type="next"
             key={teacher.id}
+            type="next"
             profile={{uri: teacher.data.photo}}
             name={teacher.data.fullName}
             desc={teacher.data.gender}
-            onPress={() => navigation.navigate('Chatting')}
+            onPress={() => navigation.navigate('TeacherProfile', teacher)}
           />
         );
       })}

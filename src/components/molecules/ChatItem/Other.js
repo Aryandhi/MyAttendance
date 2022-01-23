@@ -5,7 +5,7 @@ import {colors, fonts} from '../../../utils';
 const Other = ({text, date, photo}) => {
   return (
     <View style={styles.container}>
-      <Image source={photo} style={styles.avatar} />
+      {/* <Image source={photo} style={styles.avatar} /> */}
       <View>
         <View style={styles.chatContent}>
           <Text style={styles.text}>{text}</Text>

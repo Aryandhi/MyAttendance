@@ -20,11 +20,9 @@ const UploadPhoto = ({navigation, route}) => {
     launchImageLibrary(
       {quality: 0.5, maxWidth: 200, maxHeight: 200, includeBase64: true},
       response => {
-        console.log('response: ', response);
         if (response.didCancel || response.errorMessage) {
           showError('oops, sepertinya anda belum memilih foto');
         } else {
-          console.log('response getImage: ', response);
           const source = {uri: response.uri};
 
           setPhotoForDB(`data:${response.type};base64, ${response.base64}`);
@@ -63,12 +61,12 @@ const UploadPhoto = ({navigation, route}) => {
         <View>
           <Button
             disable={!hasPhoto}
-            title="Upload and Continue"
+            title="Upload and Lanjutkan"
             onPress={uploadAndContinue}
           />
           <Gap height={30} />
           <Link
-            title="Skip for this"
+            title="Lewati"
             align="center"
             size={16}
             onPress={() => navigation.replace('MainApp')}

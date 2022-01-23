@@ -7,11 +7,11 @@ const TeacherProfile = ({navigation, route}) => {
   const dataTeacher = route.params;
   return (
     <View style={styles.page}>
-      <Header title="Teacher Profile" onPress={() => navigation.goBack()} />
+      <Header title="Profil Guru" onPress={() => navigation.goBack()} />
       <Profile
         name={dataTeacher.data.fullName}
         desc={dataTeacher.data.profession}
-        photoURL={{uri: dataTeacher.data.photo}}
+        // photoURL={{uri: dataTeacher.data.photo}}
       />
       <Gap height={10} />
       <ProfileItem label="Alumnus" value={dataTeacher.data.university} />
@@ -22,7 +22,7 @@ const TeacherProfile = ({navigation, route}) => {
       <ProfileItem label="No. STR" value={dataTeacher.data.str_number} />
       <View style={styles.action}>
         <Button
-          title="Start Consultation"
+          title="Mulai Tanya Guru"
           onPress={() => navigation.navigate('Chatting', dataTeacher)}
         />
       </View>

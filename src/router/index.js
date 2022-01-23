@@ -25,17 +25,17 @@ const MainApp = () => {
   return (
     <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
       <Tab.Screen
-        name="Teacher"
+        name="Guru"
         component={Teacher}
         options={{headerShown: false}}
       />
       <Tab.Screen
-        name="Messages"
+        name="Pesan"
         component={Messages}
         options={{headerShown: false}}
       />
       <Tab.Screen
-        name="Information"
+        name="Informasi"
         component={Information}
         options={{headerShown: false}}
       />

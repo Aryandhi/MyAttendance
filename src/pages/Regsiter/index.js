@@ -13,7 +13,6 @@ const Register = ({navigation}) => {
     profession: '',
     email: '',
     password: '',
-    
   });
 
   const dispatch = useDispatch();
@@ -23,7 +22,6 @@ const Register = ({navigation}) => {
     const auth = getAuth(Fire);
     createUserWithEmailAndPassword(auth, form.email, form.password)
       .then(userCredential => {
-        
         dispatch({type: 'SET_LOADING', value: false});
         setForm('reset');
         const user = userCredential.user;
@@ -39,11 +37,10 @@ const Register = ({navigation}) => {
 
         storeData('user', data);
         navigation.navigate('UploadPhoto', data);
-        console.log('user: ', user);
+        // console.log('user: ', user);
       })
-      
+
       .catch(error => {
-        
         const errorMessage = error.message;
         dispatch({type: 'SET_LOADING', value: false});
         showError(errorMessage);
@@ -51,38 +48,38 @@ const Register = ({navigation}) => {
   };
   return (
     <View style={styles.page}>
-        <Header onPress={() => navigation.goBack()} title="Daftar Akun" />
-        <View style={styles.content}>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <Input
-              label="Full Name"
-              value={form.fullName}
-              onChangeText={value => setForm('fullName', value)}
-            />
-            <Gap height={24} />
-            <Input
-              label="Pekerjaan"
-              value={form.profession}
-              onChangeText={value => setForm('profession', value)}
-            />
-            <Gap height={24} />
-            <Input
-              label="Email Address"
-              value={form.email}
-              onChangeText={value => setForm('email', value)}
-            />
-            <Gap height={24} />
-            <Input
-              label="Password"
-              value={form.password}
-              onChangeText={value => setForm('password', value)}
-              secureTextEntry
-            />
-            <Gap height={24} />
-            <Button title="Continue" onPress={onContinue} />
-          </ScrollView>
-        </View>
+      <Header onPress={() => navigation.goBack()} title="Daftar Akun" />
+      <View style={styles.content}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Input
+            label="Full Name"
+            value={form.fullName}
+            onChangeText={value => setForm('fullName', value)}
+          />
+          <Gap height={24} />
+          <Input
+            label="Pekerjaan"
+            value={form.profession}
+            onChangeText={value => setForm('profession', value)}
+          />
+          <Gap height={24} />
+          <Input
+            label="Email Address"
+            value={form.email}
+            onChangeText={value => setForm('email', value)}
+          />
+          <Gap height={24} />
+          <Input
+            label="Password"
+            value={form.password}
+            onChangeText={value => setForm('password', value)}
+            secureTextEntry
+          />
+          <Gap height={24} />
+          <Button title="Lanjutkan" onPress={onContinue} />
+        </ScrollView>
       </View>
+    </View>
   );
 };
 export default Register;

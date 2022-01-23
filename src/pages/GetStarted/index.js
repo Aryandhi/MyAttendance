@@ -9,19 +9,16 @@ const GetStarted = ({navigation}) => {
     <ImageBackground source={ILGetStarted} style={styles.page}>
       <View>
         <ILLogo />
-        <Text style={styles.title}>
-          Konsultasi dengan guru jadi lebih mudah & fleksibel
-        </Text>
       </View>
       <View>
         <Button
-          title="Get Started"
+          title="Daftar"
           onPress={() => navigation.navigate('Register')}
         />
         <Gap height={16} />
         <Button
           type="secondary"
-          title="Sign In"
+          title="Masuk"
           onPress={() => navigation.replace('Login')}
         />
       </View>
@@ -39,7 +36,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     color: colors.white,
-    marginTop: 91,
+    marginTop: 50,
     fontFamily: fonts.primary[600],
   },
 });

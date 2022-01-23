@@ -28,8 +28,8 @@ const UpdateProfile = ({navigation}) => {
   }, []);
 
   const updateProfile = () => {
-    console.log('profile: ', profile);
-    console.log('new Password: ', password);
+    // console.log('profile: ', profile);
+    // console.log('new Password: ', password);
 
     if (password.length > 0) {
       if (password.length < 6) {
@@ -87,11 +87,9 @@ const UpdateProfile = ({navigation}) => {
     launchImageLibrary(
       {quality: 0.5, maxWidth: 200, maxHeight: 200, includeBase64: true},
       response => {
-        console.log('response: ', response);
         if (response.didCancel || response.errorMessage) {
           showError('oops, sepertinya anda belum memilih foto');
         } else {
-          console.log('response getImage: ', response);
           const source = {uri: response.uri};
 
           setPhotoForDB(`data:${response.type};base64, ${response.base64}`);
@@ -136,7 +134,7 @@ const UpdateProfile = ({navigation}) => {
           <Gap height={24} />
           <Input label="Password" value={password} />
           <Gap height={24} />
-          <Button title="Save Profile" onPress={updateProfile} />
+          <Button title="Simpan Perubahan" onPress={updateProfile} />
         </View>
       </ScrollView>
     </View>

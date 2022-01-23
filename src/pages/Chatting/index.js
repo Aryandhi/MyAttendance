@@ -45,7 +45,6 @@ const Chatting = ({navigation, route}) => {
             data: newDataChat,
           });
         });
-        console.log('all data chat: ', allDataChat);
         setChatData(allDataChat);
       }
     });
@@ -58,7 +57,6 @@ const Chatting = ({navigation, route}) => {
   };
 
   const chatSend = () => {
-    console.log('user: ', user);
     const today = new Date();
     const data = {
       sendBy: user.uid,
@@ -103,7 +101,7 @@ const Chatting = ({navigation, route}) => {
       <Header
         type="dark-profile"
         title={dataTeacher.data.fullName}
-        desc={dataTeacher.data.profession}
+        desc={'Guru ' + dataTeacher.data.profession}
         photo={{uri: dataTeacher.data.photo}}
         onPress={() => navigation.goBack()}
       />
@@ -114,6 +112,7 @@ const Chatting = ({navigation, route}) => {
               <View key={chat.id}>
                 <Text style={styles.chatDate}>{chat.id}</Text>
                 {chat.data.map(itemChat => {
+                  const isMe = itemChat.data.sendBy === user.uid;
                   return (
                     <ChatItem
                       key={itemChat.id}

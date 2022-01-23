@@ -50,7 +50,7 @@ const UserProfile = ({navigation}) => {
       )}
       <Gap height={14} />
       <List
-        name="Edit Profile"
+        name="Edit Profil"
         desc="Last Update Yesterday"
         type="next"
         icon="edit-profile"
@@ -63,13 +63,13 @@ const UserProfile = ({navigation}) => {
         icon="language"
       />
       <List
-        name="Berikan Rating"
+        name="Berikan Bintang"
         desc="Last Update Yesterday"
         type="next"
         icon="rate"
       />
       <List
-        name="Sign Out"
+        name="Keluar"
         desc="Last Update Yesterday"
         type="next"
         icon="help"

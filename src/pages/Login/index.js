@@ -49,7 +49,9 @@ const Login = ({navigation}) => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <Gap height={40} />
         <ILLogo />
-        <Text style={styles.title}>Masuk dan mulai berkonsultasi</Text>
+        <Text style={styles.title}>
+          Konsultasi dengan guru jadi lebih mudah & fleksibel
+        </Text>
         <Input
           label="Email Address"
           value={form.email}
@@ -63,12 +65,12 @@ const Login = ({navigation}) => {
           secureTextEntry
         />
         <Gap height={10} size={12} />
-        <Link title="Forgot My Password" />
+        <Link title="Lupa password" />
         <Gap height={40} />
-        <Button title="Sign In" onPress={login} />
+        <Button title="Mulai" onPress={login} />
         <Gap height={30} />
         <Link
-          title="Create New Account"
+          title="Buat akun baru"
           size={16}
           align="center"
           onPress={() => navigation.navigate('Register')}

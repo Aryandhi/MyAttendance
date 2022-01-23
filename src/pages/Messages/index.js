@@ -22,7 +22,7 @@ const Messages = ({navigation}) => {
           const urlUidTeacher = `teachers/${oldData[key].uidPartner}`;
           const dbRef = ref(getDatabase(Fire));
           const detailTeacher = await get(child(dbRef, urlUidTeacher));
-          console.log('detail teachers: ', detailTeacher.val());
+          // console.log('detail teachers: ', detailTeacher.val());
           data.push({
             id: key,
             detailTeacher: detailTeacher.val(),
@@ -32,7 +32,7 @@ const Messages = ({navigation}) => {
 
         await Promise.all(promises);
 
-        console.log('new data history: ', data);
+        // console.log('new data history: ', data);
         setHistoryChat(data);
       }
     });
@@ -46,7 +46,7 @@ const Messages = ({navigation}) => {
   return (
     <View style={styles.page}>
       <View style={styles.content}>
-        <Text style={styles.title}>Messages</Text>
+        <Text style={styles.title}>Pesan</Text>
         {historyChat.map(chat => {
           const dataTeacher = {
             id: chat.detailTeacher.uid,
@@ -56,7 +56,7 @@ const Messages = ({navigation}) => {
             <List
               key={chat.id}
               profile={{uri: chat.detailTeacher.photo}}
-              name={chat.detailTeacher.fullName}
+              name={'Guru ' + chat.detailTeacher.fullName}
               desc={chat.lastContentChat}
               onPress={() => navigation.navigate('Chatting', dataTeacher)}
             />
