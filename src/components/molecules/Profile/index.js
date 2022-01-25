@@ -12,10 +12,10 @@ const Profile = ({name, desc, isRemove, photoURL, onPress}) => {
         </View>
       )}
       {isRemove && (
-        <TouchableOpacity style={styles.borderProfile} onPress={onPress}>
+        <View style={styles.borderProfile} onPress={onPress}>
           <Image source={photoURL} style={styles.avatar} />
           {isRemove && <IconRemovePhoto style={styles.removePhoto} />}
-        </TouchableOpacity>
+        </View>
       )}
       {name && (
         <View>

@@ -36,12 +36,11 @@ const Register = ({navigation}) => {
         set(ref(db, `users/${user.uid}/`), data);
 
         storeData('user', data);
-        navigation.navigate('UploadPhoto', data);
-        // console.log('user: ', user);
+        navigation.navigate('MainApp', data);
       })
 
       .catch(error => {
-        const errorMessage = error.message;
+        const errorMessage = "Coba Lagi, dan pastikan semua inputan sesuai ya.."
         dispatch({type: 'SET_LOADING', value: false});
         showError(errorMessage);
       });
@@ -55,6 +54,7 @@ const Register = ({navigation}) => {
             label="Full Name"
             value={form.fullName}
             onChangeText={value => setForm('fullName', value)}
+            placeholder="Sesuai nama KTP"
           />
           <Gap height={24} />
           <Input
@@ -67,6 +67,7 @@ const Register = ({navigation}) => {
             label="Email Address"
             value={form.email}
             onChangeText={value => setForm('email', value)}
+            placeholder="saya@gmail.com"
           />
           <Gap height={24} />
           <Input
@@ -74,6 +75,7 @@ const Register = ({navigation}) => {
             value={form.password}
             onChangeText={value => setForm('password', value)}
             secureTextEntry
+            placeholder="min 6 karakter"
           />
           <Gap height={24} />
           <Button title="Lanjutkan" onPress={onContinue} />

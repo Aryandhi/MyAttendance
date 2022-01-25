@@ -2,10 +2,9 @@ import {getAuth, signInWithEmailAndPassword} from '@firebase/auth';
 import {getDatabase, onValue, ref} from '@firebase/database';
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {showMessage} from 'react-native-flash-message';
 import {useDispatch} from 'react-redux';
 import {ILLogo} from '../../assets';
-import {Button, Gap, Input, Link, Loading} from '../../components';
+import {Button, Gap, Input, Link} from '../../components';
 import {Fire} from '../../config';
 import {colors, fonts, showError, storeData, useForm} from '../../utils';
 
@@ -38,10 +37,11 @@ const Login = ({navigation}) => {
         );
       })
       .catch(error => {
-        const errorMessage = error.message;
+        const errorMessage = "Email/Password belum tepat, coba lagi atau hubungi admin kami (08xx45xx87xx)"
 
         dispatch({type: 'SET_LOADING', value: false});
         showError(errorMessage);
+        console.log(errorMessage)
       });
   };
   return (
@@ -65,7 +65,7 @@ const Login = ({navigation}) => {
           secureTextEntry
         />
         <Gap height={10} size={12} />
-        <Link title="Lupa password" />
+        {/* <Link title="Lupa password" /> */}
         <Gap height={40} />
         <Button title="Mulai" onPress={login} />
         <Gap height={30} />
